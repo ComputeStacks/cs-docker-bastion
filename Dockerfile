@@ -1,9 +1,9 @@
 FROM debian:bullseye-slim
 
-LABEL maintainer="https://github.com/ComputeStacks"
-LABEL org.opencontainers.image.authors="https://github.com/ComputeStacks"
-LABEL org.opencontainers.image.source="https://github.com/ComputeStacks/cs-docker-bastion"
-LABEL org.opencontainers.image.url="https://github.com/ComputeStacks/cs-docker-bastion"
+LABEL maintainer="https://computestacks.com"
+LABEL org.opencontainers.image.authors="https://computestacks.com"
+LABEL org.opencontainers.image.source="https://git.cmptstks.com/cs-public/images/bastion"
+LABEL org.opencontainers.image.url="https://git.cmptstks.com/cs-public/images/bastion"
 LABEL org.opencontainers.image.title="SSH Bastion Image"
 
 RUN set -ex; \
