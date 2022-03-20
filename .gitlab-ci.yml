@@ -29,7 +29,7 @@ stages:
 build:
   stage: build
   script:
-    - "docker build -t $FULL_IMAGE ."
+    - "docker build --no-cache -t $FULL_IMAGE ."
 deploy:
   stage: deploy
   script:
