@@ -53,6 +53,7 @@ RUN set -ex; \
             ruby \
             rubygems \
             bundler \
+            ftp \
     ; \
     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
     ; \
