@@ -3,10 +3,7 @@ name: Build Image
 on:
   schedule:
     - cron: '35 22 * * 2'
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
 
 env:
   # The default repo env will be 'ComputeStacks'; uppercase is not allowed.
