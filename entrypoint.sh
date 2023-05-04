@@ -196,6 +196,21 @@ EOF
 sudo -u sftpuser echo "export METADATA_AUTH=${METADATA_AUTH}" >> /home/sftpuser/.bashrc
 sudo -u sftpuser echo "export METADATA_URL=${METADATA_URL}" >> /home/sftpuser/.bashrc
 
+log "Configuring Relay for PHP"
+
+RELAY_INI_DIR=$(/usr/bin/php-config --ini-dir)
+RELAY_EXT_DIR=$(/usr/bin/php-config --extension-dir)
+
+if [ -f /usr/src/relay/relay-pkg.so ]; then
+    cp "/usr/src/relay/relay-pkg.so" "$RELAY_EXT_DIR/relay.so"
+    sed -i "s/00000000-0000-0000-0000-000000000000/$(cat /proc/sys/kernel/random/uuid)/" "$RELAY_EXT_DIR/relay.so"
+    if [ -f /usr/src/relay/relay.ini ]; then
+        # with lsphp v8+, INI_DIR returns a trailing slash. Debian PHP 7.4 does not.
+        cp "/usr/src/relay/relay.ini" "${RELAY_INI_DIR}/60-relay.ini"
+    fi
+fi
+
+
 if $startSshd; then
     log "Executing sshd"
     exec /usr/sbin/sshd -D -e
