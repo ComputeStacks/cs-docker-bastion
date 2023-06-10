@@ -116,7 +116,9 @@ COPY motd /etc/motd
 COPY computestacks/init_bastion.rb /usr/local/bin/
 COPY computestacks/load_ssh_keys.rb /usr/local/bin/
 COPY fix_perms.sh /
+COPY wordpress/extendify.php /opt/wordpress/extendify.php
 COPY wordpress/install_ocp.sh /usr/local/bin/install_ocp
+COPY wordpress/install_extendify.sh /usr/local/bin/install_extendify
 COPY entrypoint.sh /entrypoint
 
 RUN mkdir /etc/sftp.d \
@@ -151,6 +153,7 @@ RUN mkdir /etc/sftp.d \
         && mv /usr/src/relay-* /usr/src/relay \
     ; \
     chmod +x /usr/local/bin/install_ocp \
+        && chmod +x /usr/local/bin/install_extendify \
         && chmod +x /entrypoint
 
 

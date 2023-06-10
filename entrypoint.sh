@@ -96,6 +96,10 @@ function createUser() {
         chown $user:users /home/$user/.tmux.conf
     fi
 
+    if [ -d /opt/wordpress ]; then
+        chown $user:users -R /opt/wordpress
+    fi
+
     # Make sure dirs exists
     if [ -n "$dir" ]; then
         IFS=',' read -a dirArgs <<< $dir
@@ -209,6 +213,8 @@ if [ -f /usr/src/relay/relay-pkg.so ]; then
         cp "/usr/src/relay/relay.ini" "${RELAY_INI_DIR}/60-relay.ini"
     fi
 fi
+
+sudo -u sftpuser /usr/bin/wp package install wp-cli/profile-command
 
 
 if $startSshd; then
