@@ -56,17 +56,6 @@ if [[ -z "${REDIS_DB}" ]]; then
   REDIS_DB=0
 fi
 
-# Check that we have a valid token
-echo "Validating Object Cache Pro License Key..."
-TOKEN_CHECK=$(curl -A "computestacks/validate-license" -s -o /dev/null -I -w "%{http_code}" https://objectcache.pro/plugin/object-cache-pro.zip?token=$OCP_TOKEN)
-
-if [[ ! $TOKEN_CHECK == "200" ]]; then
-  echo "Invalid OCP_TOKEN: $OCP_TOKEN"
-  exit 1
-fi
-
-echo "...Valid License."
-echo
 # Check that redis is configured properly
 echo "Testing connection to Redis..."
 if [[ -z "${REDIS_PW}" ]]; then  
@@ -88,7 +77,7 @@ echo
 echo "Downloading Object Cache Pro..."
 # Download and install plugin
 PLUGIN_FILE=$(mktemp)
-curl -sSL -o $PLUGIN_FILE "https://objectcache.pro/plugin/object-cache-pro.zip?token=${OCP_TOKEN}"
+curl -sSL --fail -o $PLUGIN_FILE "https://objectcache.pro/plugin/object-cache-pro.zip?token=${OCP_TOKEN}"
 unzip $PLUGIN_FILE -d "$(wp plugin path --path=$WP_ROOT)"
 rm $PLUGIN_FILE
 echo "...Done."
