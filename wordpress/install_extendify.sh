@@ -69,7 +69,7 @@ fi
 
 
 echo "Installing Extendify..."
-wp plugin install extendify --activate --force --path=$WP_ROOT
+wp plugin install extendify --activate --force --path=$WP_ROOT --version=1.8.2
 wp theme install extendable --activate --force --path=$WP_ROOT
 echo "...Done."
 echo
