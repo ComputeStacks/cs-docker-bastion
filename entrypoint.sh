@@ -199,6 +199,7 @@ EOF
 
 sudo -u sftpuser echo "export METADATA_AUTH=${METADATA_AUTH}" >> /home/sftpuser/.bashrc
 sudo -u sftpuser echo "export METADATA_URL=${METADATA_URL}" >> /home/sftpuser/.bashrc
+sudo -u sftpuser echo "export METADATA_SERVICE=${METADATA_SERVICE}" >> /home/sftpuser/.bashrc
 
 log "Configuring Relay for PHP"
 
