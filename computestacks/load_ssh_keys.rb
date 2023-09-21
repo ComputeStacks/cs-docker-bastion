@@ -10,7 +10,7 @@ begin
 
   unless project_ssh_keys
     puts "Timeout reached during metadata ssh lookup, exiting."
-    exit 1
+    exit 0 # Exit 1 will break the remainder of the bootup sequence
   end
 
   user_keys = project_ssh_keys['ssh_keys'].join("\n")
@@ -30,5 +30,4 @@ begin
 
 rescue => e
   puts "Fatal error: #{e.message}"
-  exit 1
 end

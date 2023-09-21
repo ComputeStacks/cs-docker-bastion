@@ -10,7 +10,7 @@ begin
 
   unless bastion_metadata
     puts "Timeout reached during metadata lookup, exiting."
-    exit 1
+    exit 0
   end
 
   host_keys = bastion_metadata['host_keys']
@@ -62,5 +62,4 @@ begin
   end
 rescue => e
   puts "Fatal error: #{e.message}"
-  exit 1
 end
