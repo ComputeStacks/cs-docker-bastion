@@ -59,6 +59,7 @@ RUN set -ex \
             libzstd-dev \
             liblzf-dev \
             sudo \
+            less \
     ; \
     curl -fsSL https://packages.redis.io/gpg | gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg \
         && curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /usr/share/keyrings/postgresql-archive-keyring.gpg \
