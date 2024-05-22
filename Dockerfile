@@ -44,6 +44,8 @@ RUN set -ex \
             php8.2-readline \
             php8.2-igbinary \
             php8.2-msgpack \
+            php8.2-soap \
+            php8.2-zip \
             openssl \
             ca-certificates \
             openssh-server \
