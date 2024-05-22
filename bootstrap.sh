@@ -227,7 +227,7 @@ if [ -d /opt/user/startup-scripts ]; then
     for f in /opt/user/startup-scripts/*; do
         if [ -x "$f" ]; then
             log "Running $f ..."
-            $f
+            $f || true
         else
             log "Could not run $f."
         fi
