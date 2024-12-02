@@ -220,7 +220,7 @@ if [ -f /usr/src/relay/relay-pkg.so ]; then
     cp "/usr/src/relay/relay-pkg.so" "$RELAY_EXT_DIR/relay.so"
 fi
 
-sudo -u sftpuser /usr/bin/wp package install wp-cli/profile-command
+sudo -u sftpuser /usr/bin/wp package install wp-cli/profile-command:@stable || true
 
 # run everything in /scripts
 if [ -d /opt/user/startup-scripts ]; then
