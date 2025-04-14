@@ -147,6 +147,11 @@ RUN mkdir /etc/sftp.d \
         && echo "extension=redis.so" > $(/usr/bin/php-config --ini-dir)/redis.ini \
         && rm -rf /usr/src/phpredis \
     ; \
+    wget -O /usr/src/ioncube.tar.gz https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz \
+        && tar -xzf /usr/src/ioncube.tar.gz -C /usr/src \
+        && cp /usr/src/ioncube/ioncube_loader_lin_8.2.so /usr/lib/php/20220829/ \
+        && echo "zend_extension = /usr/lib/php/20220829/ioncube_loader_lin_8.2.so" >> "/etc/php/8.2/cli/conf.d/20-ioncube.ini" \
+        ; \
     RELAY_VERSION=$(curl -fs -L https://builds.r2.relay.so/meta/latest | awk -F '"' '{print $1}') \
         && wget -O /tmp/relay.tar.gz "https://builds.r2.relay.so/$RELAY_VERSION/relay-$RELAY_VERSION-php8.2-debian-x86-64%2Blibssl3.tar.gz" \
         && tar -xzf /tmp/relay.tar.gz -C /usr/src \
