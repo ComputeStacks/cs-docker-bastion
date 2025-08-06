@@ -45,6 +45,8 @@ RUN set -ex \
             php8.2-igbinary \
             php8.2-msgpack \
             php8.2-soap \
+            php8.2-imagick \
+            php8.2-gd \
             php8.2-zip \
             openssl \
             ca-certificates \
